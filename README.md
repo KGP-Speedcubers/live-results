@@ -1,5 +1,7 @@
 <!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
+
 <a id="readme-top"></a>
+
 <!--
 *** Thanks for checking out the Best-README-Template. If you have a suggestion
 *** that would make this better, please fork the repo and create a pull request
@@ -7,8 +9,6 @@
 *** Don't forget to give the project a star!
 *** Thanks again! Now go create something AMAZING! :D
 -->
-
-
 
 <!-- PROJECT SHIELDS -->
 <!--
@@ -18,6 +18,7 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
+
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -42,8 +43,6 @@
     <a href="https://github.com/KGP-Speedcubers/live-results/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
   </p>
 </div>
-
-
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -70,20 +69,20 @@
   </ol>
 </details>
 
-
-
 <!-- ABOUT THE PROJECT -->
+
 ## About The Project
 
-Results are a crucial part of cubing competitions. They can define whether or not someone 
+Results are a crucial part of cubing competitions. They can define whether or not someone
 advances to the next rounds, or what prices they win. I hated using spreadsheets
 for this and [WCA Live](https://live.worldcubeassociation.org/) doesn't support
-unofficial competitions. 
+unofficial competitions.
 
-Also since cubing competitions happen in KGP we don't really even need to deploy this anywhere, 
-we can just expose it on the local network. 
+Also since cubing competitions happen in KGP we don't really even need to deploy this anywhere,
+we can just expose it on the local network.
 
-Livescore is designed to 
+Livescore is designed to
+
 - Allow for easy data entry
 - Let others view their results
 
@@ -91,21 +90,18 @@ There's a lot of enhancements that can be added, but these are the design princi
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 ### Built With
 
-* [![React][React.js]][React-url]
-* [![Vite][Vite]][Vite-url]
-* [![TypeScript][TypeScript]][TypeScript-url]
-* [![Express][Express]][Express-url]
-* [![SQLite][SQLite]][SQLite-url]
+- [![React][React.js]][React-url]
+- [![Vite][Vite]][Vite-url]
+- [![TypeScript][TypeScript]][TypeScript-url]
+- [![Express][Express]][Express-url]
+- [![SQLite][SQLite]][SQLite-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- GETTING STARTED -->
+
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
@@ -113,23 +109,22 @@ To get a local copy up and running follow these simple example steps.
 ### Prerequisites
 
 > First get an idea of what cubing competitions are like. You can read [this](https://docs.google.com/document/d/1ApM7HCa9DnJVZYJqFS2xz5ZlW6sSQiF2gRAkypDoNhY/edit?tab=t.0)
-and follow any of the given resources
+> and follow any of the given resources
 
-* make sure you have `pnpm` installed. On Arch Linux
+- make sure you have `pnpm` installed. On Arch Linux
   ```sh
   sudo pacman -S pnpm
   ```
 
-
 ### Installation
 
-* install dependencies and set up backend
+- install dependencies and set up backend
   ```sh
   cd backend/
   npm install
   node server.js
   ```
-* same for frontend
+- same for frontend
   ```sh
   cd frontend/
   pnpm install
@@ -138,10 +133,11 @@ and follow any of the given resources
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- USAGE EXAMPLES -->
+
 ## Usage
+
+Head to the `localhost:5173/admin` and login with password in [constants](/frontend/src/utils/constants.ts).
 
 <div style="display: flex; justify-content: space-around; align-items: center;">
 
@@ -161,9 +157,8 @@ and follow any of the given resources
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- ROADMAP -->
+
 ## Roadmap
 
 - [ ] Fix Import from csv
@@ -171,20 +166,19 @@ and follow any of the given resources
 - [ ] Add frontend README
 - [ ] Add Backend README
 - [ ] Add Authentication for backend request
-  * this might be unnescary after containerisation though
+  - this might be unnescary after containerisation though
 - [ ] Add CRUD operations to the Database
 - [ ] Add more tables for participants, just name isn't enough
 - [ ] Improve styling
-  * ugly rn :(
+  - ugly rn :(
 - [ ] Move backend from `npm` to `pnpm` and add a `.gitignore`
 
 See the [open issues](https://github.com/KGP-Speedcubers/live-results/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- CONTRIBUTING -->
+
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -207,33 +201,32 @@ Don't forget to give the project a star! Thanks again!
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- CONTACT -->
+
 ## Contact
 
-* Project Link: [https://github.com/KGP-Speedcubers/live-results](https://github.com/KGP-Speedcubers/live-results)
-* Discord Server: [https://discord.gg/KQdGdB93Uc](https://discord.gg/KQdGdB93Uc)
-  * join the `#livescore` channel
+- Project Link: [https://github.com/KGP-Speedcubers/live-results](https://github.com/KGP-Speedcubers/live-results)
+- Discord Server: [https://discord.gg/KQdGdB93Uc](https://discord.gg/KQdGdB93Uc)
+  - join the `#livescore` channel
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- ACKNOWLEDGMENTS -->
+
 ## Acknowledgments
 
 Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
 
-* [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
-* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-* [Malven's Grid Cheatsheet](https://grid.malven.co/)
-* [Img Shields](https://shields.io)
-* [React Icons](https://react-icons.github.io/react-icons/search)
+- [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
+- [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
+- [Malven's Grid Cheatsheet](https://grid.malven.co/)
+- [Img Shields](https://shields.io)
+- [React Icons](https://react-icons.github.io/react-icons/search)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
 [contributors-shield]: https://img.shields.io/github/contributors/KGP-Speedcubers/live-results.svg?style=for-the-badge
 [contributors-url]: https://github.com/KGP-Speedcubers/live-results/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/KGP-Speedcubers/live-results.svg?style=for-the-badge
