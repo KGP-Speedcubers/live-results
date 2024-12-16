@@ -2,15 +2,21 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import "../styles/Results.css";
-import { BASE_URL } from '../utils/constants';
+import { BASE_URL, DELETE_URL } from '../utils/constants';
+import UpdateBox from './UpdateBox';
+import DeleteConfirmation from './deleteConfirmation';
+import { MdDelete } from "react-icons/md";
 
 interface Participant {
   id?: number; // Optional ID for the participant
   name: string;
   solves: string[];
 }
+interface ResultsProps{
+  isAuthenticated: Boolean
+}
 
-const Results: React.FC = () => {
+const Results: React.FC<ResultsProps> = ({ isAuthenticated }) => {
   const { event } = useParams<{ event: string }>();
   const [participants, setParticipants] = useState<Participant[]>([]);
   const [sortField, setSortField] = useState<string>('mean'); // Default sort field
@@ -88,6 +94,11 @@ const Results: React.FC = () => {
     return 0;
   });
 
+  // Update and delete operations
+  const [showUpdateBox, setUpdateBox] = useState(false);
+  const [showDeleteBox, setDeleteBox] = useState(false);
+  const [selectedEntry, setSelectedEntry] = useState({});
+
   return (
     <div className="results">
       <header className="results__header">
@@ -121,6 +132,15 @@ const Results: React.FC = () => {
           </ul>
         </nav>
       </header>
+
+      {showUpdateBox && isAuthenticated && 
+        <UpdateBox setUpdateBox={setUpdateBox} entry={selectedEntry} event={event} />
+      }
+
+      {showDeleteBox && isAuthenticated &&
+        <DeleteConfirmation setDeleteBox={setDeleteBox} entry={selectedEntry} event={event} />
+      }
+
       <h2 className="results__title">Results for {event.toUpperCase()}</h2>
       {participants.length === 0 ? (
         <p className="results__no-data">No results available.</p>
@@ -141,6 +161,7 @@ const Results: React.FC = () => {
               <th className="results__header-cell" onClick={() => handleSort('mean')}>
                 Mo3/Ao5 {sortField === 'mean' && (sortOrder === 'asc' ? '↑' : '↓')}
               </th>
+
             </tr>
           </thead>
           <tbody className="results__tbody">
@@ -158,6 +179,23 @@ const Results: React.FC = () => {
                 </td>
                 <td className="results__cell">{calculateBestSolve(participant.solves)}</td>
                 <td className="results__cell">{calculateMeanSolve(participant.solves)}</td>
+                
+                {isAuthenticated && 
+                <>
+                  <td className='results__cell'>
+                    <button onClick={()=>{
+                      setUpdateBox(true);
+                      setSelectedEntry(participant);
+                    }} className='results__cell'>Edit</button>
+                  </td>
+                  <td className='results__cell'>
+                    <button className='results__cell' onClick={()=>{
+                      setDeleteBox(true);
+                      setSelectedEntry(participant);
+                    }}><MdDelete className='results__delete_icon' /></button>
+                  </td>
+                </>
+                }
               </tr>
             ))}
           </tbody>
