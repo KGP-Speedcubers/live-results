@@ -170,9 +170,9 @@ and follow any of the given resources
 - [ ] Containerise Project
 - [ ] Add frontend README
 - [ ] Add Backend README
-- [ ] Add Authentication for backend request
+- [x] Add Authentication for backend request
   * this might be unnescary after containerisation though
-- [ ] Add CRUD operations to the Database
+- [x] Add CRUD operations to the Database
 - [ ] Add more tables for participants, just name isn't enough
 - [ ] Improve styling
   * ugly rn :(
