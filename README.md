@@ -138,6 +138,11 @@ and follow any of the given resources
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+### Docker
+
+```bash
+docker-compose up
+```
 
 
 <!-- USAGE EXAMPLES -->

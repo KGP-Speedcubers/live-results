@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import "../styles/Results.css";
-import { BASE_URL, DELETE_URL } from '../utils/constants';
+import { BASE_URL } from '../utils/constants';
 import UpdateBox from './UpdateBox';
-import DeleteConfirmation from './deleteConfirmation';
+import DeleteConfirmation from './DeleteConfirmation';
 import { MdDelete } from "react-icons/md";
 
 interface Participant {
@@ -12,7 +12,7 @@ interface Participant {
   name: string;
   solves: string[];
 }
-interface ResultsProps{
+interface ResultsProps {
   isAuthenticated: Boolean
 }
 
@@ -133,7 +133,7 @@ const Results: React.FC<ResultsProps> = ({ isAuthenticated }) => {
         </nav>
       </header>
 
-      {showUpdateBox && isAuthenticated && 
+      {showUpdateBox && isAuthenticated &&
         <UpdateBox setUpdateBox={setUpdateBox} entry={selectedEntry} event={event} />
       }
 
@@ -179,22 +179,22 @@ const Results: React.FC<ResultsProps> = ({ isAuthenticated }) => {
                 </td>
                 <td className="results__cell">{calculateBestSolve(participant.solves)}</td>
                 <td className="results__cell">{calculateMeanSolve(participant.solves)}</td>
-                
-                {isAuthenticated && 
-                <>
-                  <td className='results__cell'>
-                    <button onClick={()=>{
-                      setUpdateBox(true);
-                      setSelectedEntry(participant);
-                    }} className='results__cell'>Edit</button>
-                  </td>
-                  <td className='results__cell'>
-                    <button className='results__cell' onClick={()=>{
-                      setDeleteBox(true);
-                      setSelectedEntry(participant);
-                    }}><MdDelete className='results__delete_icon' /></button>
-                  </td>
-                </>
+
+                {isAuthenticated &&
+                  <>
+                    <td className='results__cell'>
+                      <button onClick={() => {
+                        setUpdateBox(true);
+                        setSelectedEntry(participant);
+                      }} className='results__cell'>Edit</button>
+                    </td>
+                    <td className='results__cell'>
+                      <button className='results__cell' onClick={() => {
+                        setDeleteBox(true);
+                        setSelectedEntry(participant);
+                      }}><MdDelete className='results__delete_icon' /></button>
+                    </td>
+                  </>
                 }
               </tr>
             ))}

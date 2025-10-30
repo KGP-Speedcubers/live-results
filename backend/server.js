@@ -4,13 +4,14 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
 const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv').config();
 
 const app = express();
 const PORT = 5000;
 
 // password and encryption key
-const ADMIN_PASSWORD = "password";
-const SECRET_KEY = "secret";
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
+const SECRET_KEY = process.env.JWT_SECRET;
 
 // Middleware
 app.use(cors());
@@ -91,32 +92,32 @@ app.get('/participants', (req, res) => {
 });
 
 // Endpoint to delete a participant for a specific event
-app.post('/delete', (req,res) => {
+app.post('/delete', (req, res) => {
   const event = req.query.event;
   const id = req.body.id;
   const tableName = getTableName(event);
 
   db.run(`DELETE FROM ${tableName} WHERE id=?`, [id], (err) => {
-    if(err){
-      res.status(500).json({ deleted:false, error: err.message });
+    if (err) {
+      res.status(500).json({ deleted: false, error: err.message });
       console.error('Database error:', err.message);
-    }else{
+    } else {
       res.json({ deleted: true, id: id });
     }
   })
 });
 
 // Endpoint to update a participant for a specific event
-app.post('/update', (req,res)=>{
+app.post('/update', (req, res) => {
   const event = req.query.event;
   const { id, name, solves } = req.body;
   const tableName = getTableName(event);
 
-  db.run(`UPDATE ${tableName} SET name=?, solves=? WHERE id=?`, [name, JSON.stringify(solves) ,  id], (err) => {
-    if(err){
-      res.status(500).json({ updated:false, error: err.message });
+  db.run(`UPDATE ${tableName} SET name=?, solves=? WHERE id=?`, [name, JSON.stringify(solves), id], (err) => {
+    if (err) {
+      res.status(500).json({ updated: false, error: err.message });
       console.error('Database error:', err.message);
-    }else{
+    } else {
       res.json({ updated: true, id: id });
     }
   })
@@ -139,27 +140,27 @@ app.post('/participants', (req, res) => {
 });
 
 // Endpoint for admin authentication
-app.post("/adminLogin", (req,res)=>{
+app.post("/adminLogin", (req, res) => {
   const pwd = req.body.password;
   if (pwd == ADMIN_PASSWORD) {
-    const token = jwt.sign({password: pwd}, SECRET_KEY);
-    return res.json({ status:"ok", authenticated: true, passwordToken:token  })
-  }else{
-    return res.json({ status:404, authenticated: false  })
+    const token = jwt.sign({ password: pwd }, SECRET_KEY);
+    return res.json({ status: "ok", authenticated: true, passwordToken: token })
+  } else {
+    return res.json({ status: 404, authenticated: false })
   }
 })
 
-app.get("/api/adminLogin", (req,res)=>{
-  try{
+app.get("/api/adminLogin", (req, res) => {
+  try {
     const token = req.headers['password-token'];
     const decoded = jwt.decode(token);
     if (decoded.password == ADMIN_PASSWORD) {
-      return res.json({ status:"ok", authenticated: true  })
-    }else{
-      return res.json({ status:404, authenticated: false  })
+      return res.json({ status: "ok", authenticated: true })
+    } else {
+      return res.json({ status: 404, authenticated: false })
     }
-  }catch{
-    return res.json({ status:404, authenticated: false  })
+  } catch {
+    return res.json({ status: 404, authenticated: false })
   }
 })
 
